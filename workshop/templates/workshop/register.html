@@ -1,0 +1,23 @@
+{% extends 'workshop/base.html' %}
+{% block title %}SC Регистрация{% endblock %}
+
+
+{% block content %}
+<h1>Регистрация</h1>
+
+{% comment %}
+{% if not request.user.is_authenticated %}
+
+<form class="main" method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Регистрация</button>
+</form>
+
+{%else%}
+
+    <h2>{{ user.username }}, Вы уже авторизованы</h2>
+
+{% endif %}
+{% endcomment %}
+{% endblock %}

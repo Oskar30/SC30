@@ -1,0 +1,29 @@
+{% extends 'workshop/base.html' %}
+
+{% block title %}SC Касса{% endblock %}
+
+{% block content %}
+
+<div class="main">
+    <h2>Касса</h2>
+
+
+    <b>Сегодняшние заказы в статусе "Выполнен":</b>
+    <br>
+    {% for order in cash_today.orders_today %}
+    <a href="{{order.get_absolute_url}}">{{order}}</a><br>
+    {%endfor%}
+    <hr>
+    Касса сегодня: {{cash_today.cash_today}}
+    <hr>
+    Касса: {{cash_total}}
+
+
+</div>
+
+
+<!-- Sidebar слева для страниц repair-->
+{% include "workshop/sidebar.html" %}
+{% endblock %}
+
+

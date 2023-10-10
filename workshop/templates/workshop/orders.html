@@ -1,0 +1,37 @@
+{% extends 'workshop/base.html' %}
+
+{% block title %}SC Заказы{% endblock %}
+
+{% block content %}
+
+<table class="main">
+    <colgroup span="4"></colgroup>
+    <tr>
+        <th>Заказ</th>
+        <th>Время заказа</th>
+        <th>Статус</th>
+        <th>Цена</th>
+        <th>Клиент</th>
+        <th>Контакты</th>
+        <th><a href="{% url 'add_order' %}">Добавить заказ</a></th>
+    </tr>
+      
+    {%for order in orders%}
+    <tr>
+        <td><a href="{{order.get_absolute_url}}">№{{order.id}}</a> | {{order.title}}</td>
+        <td>{{order.time_create|date:"d-m-Y G:i"}}</td>
+        <td>{{order.status}}</td>
+        <td>{{order.price}}</td>
+        <td>{{order.person}}</td>
+        <td>{{order.contact}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+<!-- Sidebar слева для страниц repair-->
+{% include "workshop/sidebar.html" %}
+
+{% endblock %}
+
+

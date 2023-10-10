@@ -1,0 +1,22 @@
+{% extends 'workshop/base.html' %}
+{% block title %}SC Авторизация{% endblock %}
+
+
+{% block content %}
+<h1>Авторизация</h1>
+
+{% if not request.user.is_authenticated %}
+    <form class="main" method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Войти</button>
+    </form>
+{%else%}
+
+    <h2>{{ user.username }}, Вы уже авторизованы</h2>
+
+{% endif %}
+
+{% endblock %}
+
+
