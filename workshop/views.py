@@ -120,4 +120,5 @@ class Cashbox(ListView):
 
         return context
 
+#test
 
