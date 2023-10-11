@@ -120,4 +120,4 @@ class Cashbox(ListView):
 
         return context
 
-    # f5s4dS%W
+
