@@ -13,6 +13,12 @@ class AddOrderForm(forms.ModelForm):
         fields = ["person", "contact", "title", "description", "status", "price", "expenses"]
 
 
+class AddExpensesForm(forms.ModelForm):
+    class Meta:
+        model = models.Expenses
+        fields = ["expenses", "sum"]
+
+
 class RegisterUserForm(UserCreationForm):
     username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class':'form-input'}))
     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class':'form-input'}))
@@ -23,6 +29,7 @@ class RegisterUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'email', 'password1', 'password2')
+
 
 class LoginUserForm(AuthenticationForm):
     username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class':'form-input'}))

@@ -1,0 +1,30 @@
+{% extends 'workshop/base.html' %}
+
+{% block title %}SC Касса{% endblock %}
+
+{% block content %}
+
+<table class="main">
+    <colgroup span="4"></colgroup>
+    <tr>
+        <th>Траты</th>
+        <th>Сумма</th>
+        <th>Время</th>
+        <th><a href="{% url 'add_expenses' %}">Добавить Затраты</a></th>
+    </tr>
+      
+    {% for expense in expenses %}
+    <tr>
+        <td><a href="{{expense.get_absolute_url}}">№{{expense.id}}</a> | {{expense.expenses}}</td>
+        <td>{{expense.sum}}</td>
+        <td>{{expense.time_create|date:"d-m-Y G:i"}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+<!-- Sidebar слева для страниц repair-->
+{% include "workshop/sidebar.html" %}
+{% endblock %}
+
+

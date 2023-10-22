@@ -43,3 +43,6 @@ class Expenses(models.Model):
 
     time_create = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
     time_update = models.DateTimeField(auto_now=True, verbose_name="Время обновления")
+
+    def get_absolute_url(self):
+        return reverse('update_expenses', kwargs={'pk':self.pk})

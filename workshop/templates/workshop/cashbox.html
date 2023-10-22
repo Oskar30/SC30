@@ -7,18 +7,24 @@
 <div class="main">
     <h2>Касса</h2>
 
-
-    <b>Сегодняшние заказы в статусе "Выполнен":</b>
+    <i>Заказы переведенные в статус "Выполнен" сегодня: {{cash_today.cash_today_not_expenses}}</i>
     <br>
     {% for order in cash_today.orders_today %}
     <a href="{{order.get_absolute_url}}">{{order}}</a><br>
-    {%endfor%}
+    {%endfor%}  
     <hr>
-    Касса сегодня: {{cash_today.cash_today}}
+    {% if expenses_today %}
+        <i>Траты сегодня: {{expenses_today.expenses_today_sum}}</i>
+        <br>
+        {% for expense in expenses_today.expenses_today %}
+        <a href="{{expense.get_absolute_url}}">{{expense.expenses}}:</a> {{expense.sum}}<br>
+        {% endfor %}  
+    {% endif %}
+    
     <hr>
-    Касса: {{cash_total}}
-
-
+    <b>Касса сегодня:</b> {{cash_today.cash_today}}
+    <hr>
+    <b>Касса:</b> {{cash_total}}
 </div>
 
 

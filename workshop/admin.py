@@ -9,3 +9,6 @@ class OrderAdmin(admin.ModelAdmin):
     #prepopulated_fields = {"slug":("name",)}
 
 admin.site.register(models.Order, OrderAdmin)
+
+
+admin.site.register(models.Expenses)
