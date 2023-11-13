@@ -1,0 +1,24 @@
+{% extends 'workshop/base.html' %}
+
+{% block title %}Склад{% endblock %}
+
+{% block content %}
+
+<table class="main">
+    <colgroup span="4"></colgroup>
+    <tr>
+        <th>Запчасти</th>
+        <th> </th>
+        <th><a href="{% url 'add_spare' %}">Добавить Запчасть</a></th>
+    </tr>
+      
+    {% for sp in spare %}
+    <tr>
+        <td><a href="{{sp.get_absolute_url}}">{{sp}}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!-- Sidebar слева для страниц repair-->
+{% include "workshop/sidebar.html" %}
+{% endblock %}

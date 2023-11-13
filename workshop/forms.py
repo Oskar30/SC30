@@ -19,6 +19,12 @@ class AddExpensesForm(forms.ModelForm):
         fields = ["expenses", "sum"]
 
 
+class AddSpareForm(forms.ModelForm):
+    class Meta:
+        model = models.Spare
+        fields = ["title", "description"]
+
+
 class RegisterUserForm(UserCreationForm):
     username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class':'form-input'}))
     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class':'form-input'}))

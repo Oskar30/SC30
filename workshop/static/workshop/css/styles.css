@@ -35,8 +35,8 @@
 
 .sidenav {
     opacity: .9;
-    height: 30%;
-    width: 130px;
+    height: 25%;
+    width: 125px;
     position: fixed;
     z-index: 1;
     top: 140px;

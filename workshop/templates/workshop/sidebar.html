@@ -2,9 +2,9 @@
 {% if request.user.is_authenticated %}
 <div class="sidenav">
     <a href="{% url 'orders' %}">Заказы</a>
-    <a href="#sales">Продажи</a>
+    <!--<a href="#sales">Продажи</a>-->
     <a href="{% url 'expenses' %}">Расходы</a>
     <a href="{% url 'cashbox' %}">Касса</a>
-    <a href="#stock">Склад</a>
+    <a href="{% url 'stock' %}">Склад</a>
 </div>
 {% endif %} 

@@ -1,13 +1,13 @@
 {% extends 'workshop/base.html' %}
 
 
-{% block title %} Обновление Затрат {% endblock %}
+{% block title %} Обновление {% endblock %}
 
 {% block content %}
 <form class="main" method="post" enctype="multipart/form-data">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Обновить">
-<!--<input type="submit" value="Удалить"> -->
+    <a href="{{ del }}"> Удалить </a>
 </form>
 
 <!-- Sidebar слева для страниц repair-->

@@ -15,7 +15,7 @@
       
     {% for expense in expenses %}
     <tr>
-        <td><a href="{{expense.get_absolute_url}}">№{{expense.id}}</a> | {{expense.expenses}}</td>
+        <td><a href="{{expense.get_absolute_url}}">{{expense.expenses}}</a></td>
         <td>{{expense.sum}}</td>
         <td>{{expense.time_create|date:"d-m-Y G:i"}}</td>
     </tr>

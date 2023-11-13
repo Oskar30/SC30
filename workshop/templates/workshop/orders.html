@@ -18,7 +18,7 @@
       
     {%for order in orders%}
     <tr>
-        <td><a href="{{order.get_absolute_url}}">№{{order.id}}</a> | {{order.title}}</td>
+        <td><a href="{{order.get_absolute_url}}">{{order.title}}</a></td>
         <td>{{order.time_create|date:"d-m-Y G:i"}}</td>
         <td>{{order.status}}</td>
         <td>{{order.price}}</td>

@@ -27,6 +27,7 @@ urlpatterns = [
     path('login/', views.LoginUser.as_view(), name='login'),
     path('logout/', views.logout_user, name='logout'),
     path('', views.Index.as_view(), name='home'),
+    #path('contact/', views.Contact.as_view(), name='contact'),
     path('repair/', include('workshop.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
     
