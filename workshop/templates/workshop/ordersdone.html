@@ -1,8 +1,10 @@
 {% extends 'workshop/base.html' %}
 
-{% block title %}SC Заказы{% endblock %}
+{% block title %}SC Выполненные заказы{% endblock %}
 
 {% block content %}
+
+<h2 align="center">Выполненные заказы</h2>
 
 <table class="main" cellspacing="15">
     <colgroup span="4"></colgroup>
@@ -13,14 +15,13 @@
         <th>Цена</th>
         <th>Клиент</th>
         <th>Контакты</th>
-        <th><a href="{% url 'add_order' %}">Добавить заказ</a></th>
-        <th><a href="{% url 'orders_done' %}">Выполненные заказы</a></th>
 
     </tr>
-      
+    
+
     {%for order in orders%}
-        {%if order.status != "Выполнен"%}
-            <tr>
+        {%if order.status == "Выполнен" %}
+            <tr style="color: green;">
                 <td><a href="{{order.get_absolute_url}}">{{order.title}}</a></td>
                 <td>{{order.time_create|date:"d-m-Y G:i"}}</td>
                 <td>{{order.status}}</td>

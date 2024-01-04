@@ -95,6 +95,19 @@ class Orders(LoginRequiredMixin, TemplateView):
         context['orders'] = orders
 
         return context
+    
+
+class OrdersDone(LoginRequiredMixin, TemplateView):
+    template_name = "workshop/ordersdone.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        user = self.request.user
+        orders = models.Order.objects.filter(author=user)
+        context['orders'] = orders
+
+        return context
 
 
 # Заменить на PermissionRequiredMixin
