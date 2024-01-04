@@ -1,10 +1,10 @@
 {% extends 'workshop/base.html' %}
 
-{% block title %}SC Выполненные заказы{% endblock %}
+{% block title %}SC Выполненные и отмененные заказы{% endblock %}
 
 {% block content %}
 
-<h2 align="center">Выполненные заказы</h2>
+<h2 align="center">Выполненные и отмененные заказы</h2>
 
 <table class="main" cellspacing="15">
     <colgroup span="4"></colgroup>
@@ -30,6 +30,17 @@
                 <td>{{order.contact}}</td>
             </tr>
         {%endif%}
+
+        {%if order.status == "Отменен" %}
+            <tr style="color:brown">
+                <td><a href="{{order.get_absolute_url}}">{{order.title}}</a></td>
+                <td>{{order.time_create|date:"d-m-Y G:i"}}</td>
+                <td>{{order.status}}</td>
+                <td>{{order.price}}</td>
+                <td>{{order.person}}</td>
+                <td>{{order.contact}}</td>
+            </tr>
+        {%endif%}
     {% endfor %}
 </table>
 
@@ -38,5 +49,3 @@
 {% include "workshop/sidebar.html" %}
 
 {% endblock %}
-
-
