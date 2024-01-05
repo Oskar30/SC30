@@ -5,7 +5,7 @@ urlpatterns = [
     path('', views.Repair.as_view(), name='repair'),
     
     path('orders/', views.Orders.as_view(), name='orders'),
-    path('orders/done', views.OrdersDone.as_view(), name='orders_done'),
+    path('orders/done/', views.OrdersDone.as_view(), name='orders_done'),
     path('orders/addorder/', views.AddOrder.as_view(), name='add_order'),
     path('orders/<int:pk>/', views.UpdateOrder.as_view(), name='update_order'),
     path('orders/<int:pk>/delete/', views.DeleteOrder.as_view(), name='delete_order'),
