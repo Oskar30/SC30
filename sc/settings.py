@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'workshop.apps.WorkshopConfig',
     'captcha',
     'debug_toolbar',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -166,4 +169,17 @@ LOGGING = {
             "propagate": True,
         },
     },
+}
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.UserRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'user': '20/minute'
+    }
 }

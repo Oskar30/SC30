@@ -5,7 +5,7 @@ from django.forms.models import BaseModelForm
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
-from workshop import models, forms
+from workshop import models, forms, serializers, permissions
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from django.views.generic.edit import UpdateView
 from django.views.generic.base import TemplateView
@@ -14,8 +14,12 @@ from django.contrib.auth import logout, login
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from datetime import datetime, date
 from django.http import Http404
-
 import logging
+from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAuthenticated
+
+
 
 logger = logging.getLogger('main')
 
@@ -264,3 +268,20 @@ class Cashbox(LoginRequiredMixin, TemplateView):
 
         return context
 
+
+
+class OrderViewSet(ModelViewSet):
+    queryset = models.Order.objects.all()
+    serializer_class = serializers.OrderSerializer
+    permission_classes = [IsAuthenticated, permissions.IsOwner]
+    
+    def get_queryset(self):
+        queryset = models.Order.objects.filter(author=self.request.user)
+        return queryset
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+        return super().perform_create(serializer)
+    
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)

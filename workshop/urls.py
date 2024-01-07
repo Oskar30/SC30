@@ -1,5 +1,9 @@
 from django.urls import path
 from workshop import views
+from rest_framework.routers import DefaultRouter
+
+r = DefaultRouter()
+r.register('api/orders', views.OrderViewSet)
 
 urlpatterns = [
     path('', views.Repair.as_view(), name='repair'),
@@ -22,4 +26,4 @@ urlpatterns = [
 
     path('cashbox/', views.Cashbox.as_view(), name='cashbox'),
 
-]
+] + r.urls

@@ -1,0 +1,34 @@
+GET http://127.0.0.1:8000/repair/api/orders/
+Authorization: Token 0264ac7cddb3c4787bb49505165319e52360ff25
+
+###
+
+POST http://127.0.0.1:8000/repair/api/orders/
+Content-Type: application/json
+Authorization: Token 0264ac7cddb3c4787bb49505165319e52360ff25
+
+{
+    "person": "2",
+    "title": "22"
+}
+
+###
+
+GET http://127.0.0.1:8000/repair/api/orders/16/
+Authorization: Token 3f73f6b040ce50b2ad83e4d2bd0d7b6be22b199d
+
+###
+
+PATCH http://127.0.0.1:8000/repair/api/orders/15/
+Content-Type: application/json
+Authorization: Token 0264ac7cddb3c4787bb49505165319e52360ff25
+
+{
+    "person": "new person",
+    "title": "new title"
+}
+
+###
+
+DELETE http://127.0.0.1:8000/repair/api/orders/16/
+Authorization: Token 3f73f6b040ce50b2ad83e4d2bd0d7b6be22b199d
